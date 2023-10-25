@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/4d97f5a987.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+  <div id="app">
+
+
+    <div class="container">
+      <h1>{{title}}</h1>
+      <div>
+        <input type="text" placeholder="Inserici una Task" v-model="newTask" @keyup.enter="addTask()">
+        <button @click="addTask()">{{button}}</button>
+      </div>
+      <div class="error">{{ error }}</div>
+      <div class="list">
+        <ul v-if="todos.length > 0">
+          <li @click="addDoneClass(index)" v-for="(task, index) in todos" :key="index"><span
+              :class="{done: task.done}">{{
+              task.text }}</span>
+            <i class="fas fa-times" @click="removeTask(index)"></i>
+          </li>
+        </ul>
+        <div v-else class="no-task green">Non ci sono Task!</div>
+      </div>
+    </div>
+  </div>
+
+  <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
